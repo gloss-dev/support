@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gloss — служба поддержки</title>
+    <meta name="description" content="Служба поддержки приложения Gloss" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6efff 0%, #fff4fb 45%, #ffffff 100%);
+            color: #1f1f1f;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 16px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 720px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(130, 90, 200, 0.14);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 24px 80px rgba(130, 90, 200, 0.14);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #7b3ff2;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            font-size: 36px;
+            line-height: 1.15;
+        }
+
+        p {
+            margin: 0 0 18px;
+            font-size: 17px;
+            line-height: 1.65;
+            color: #444;
+        }
+
+        .section {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        a {
+            color: #7b3ff2;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 32px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        @media (max-width: 520px) {
+            .card {
+                padding: 28px 22px;
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <div class="logo">GLOSS</div>
+
+        <h1>Служба поддержки Gloss</h1>
+
+        <p>
+            Если у вас возникли вопросы по работе приложения Gloss,
+            напишите нам. Мы поможем с записью к мастеру, профилем,
+            отменой или изменением записи, техническими ошибками и обратной связью.
+        </p>
+
+        <div class="section">
+            <p>
+                Email поддержки:<br />
+                <a href="mailto:gloss.support@yandex.ru">gloss.support@yandex.ru</a>
+            </p>
+
+            <p>
+                Обычно мы отвечаем в течение 1–2 рабочих дней.
+            </p>
+        </div>
+
+        <div class="footer">
+            © 2026 Gloss
+        </div>
+    </section>
+</main>
+</body>
+</html>
