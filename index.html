@@ -26,126 +26,100 @@
         html,
         body {
             margin: 0;
-            min-height: 100%;
+            height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             color: var(--text-main);
             background:
                     radial-gradient(circle at 85% 8%, rgba(255, 220, 250, 0.95) 0, transparent 34%),
                     radial-gradient(circle at 10% 85%, rgba(237, 229, 255, 0.92) 0, transparent 38%),
-                    linear-gradient(135deg, #ffffff 0%, #fff8fd 42%, #f7efff 100%);
-            overflow-x: hidden;
+                    linear-gradient(135deg, #ffffff 0%, #fff8fd 42%, #f7efff 100%) fixed;
+            overflow: hidden;
         }
 
-        body::before,
-        body::after {
-            content: "";
+        .bg-lines {
             position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
-            width: 420px;
-            height: 420px;
-            border: 72px solid transparent;
-            border-radius: 46% 54% 55% 45%;
             pointer-events: none;
-            opacity: 0.9;
-        }
-
-        body::before {
-            left: -180px;
-            bottom: -95px;
-            border-color: #7b63ff;
-            transform: rotate(18deg);
-            filter: drop-shadow(0 18px 24px rgba(123, 99, 255, 0.18));
-        }
-
-        body::after {
-            right: -210px;
-            bottom: -20px;
-            border-color: #ec58d6;
-            transform: rotate(-26deg);
-            filter: drop-shadow(0 18px 24px rgba(236, 88, 214, 0.16));
         }
 
         .page {
             position: relative;
             z-index: 1;
-            min-height: 100vh;
-            padding: 36px 28px 32px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(14px, 2.4vh, 30px) 28px;
             overflow: hidden;
         }
 
         .logo {
+            position: absolute;
+            top: 28px;
+            left: 28px;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            color: var(--text-main);
+            gap: 9px;
+        }
+
+        .logo span {
+            font-family: Georgia, "Times New Roman", "PT Serif", serif;
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            color: #3a3f47;
         }
 
         .logo-mark {
-            width: 52px;
-            height: 52px;
-            border-radius: 17px;
-            background:
-                    radial-gradient(circle at 72% 24%, #ffd5fb 0 12%, transparent 18%),
-                    conic-gradient(from 210deg, #6a35ff, #d52dff, #ff60c8, #ffffff, #8b35ff);
-            box-shadow: 0 10px 24px rgba(169, 61, 239, 0.24);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-mark::before {
-            content: "G";
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 34px;
-            font-weight: 800;
-            font-style: italic;
-            text-shadow: 0 2px 8px rgba(66, 24, 120, 0.18);
+            width: 36px;
+            height: 36px;
+            background: url("logo.png") center / contain no-repeat;
+            filter: drop-shadow(0 8px 16px rgba(169, 61, 239, 0.22));
         }
 
         .hero {
             max-width: 960px;
-            margin: 52px auto 0;
+            margin: clamp(16px, 3vh, 34px) auto 0;
             text-align: center;
         }
 
         h1 {
             margin: 0;
-            font-size: clamp(54px, 7vw, 88px);
-            line-height: 0.96;
+            font-size: clamp(40px, 6vh, 78px);
+            line-height: 0.98;
             font-weight: 800;
             letter-spacing: -0.055em;
             color: var(--text-main);
         }
 
         .subtitle {
-            margin: 26px 0 0;
-            font-size: clamp(28px, 3.2vw, 42px);
+            margin: clamp(12px, 1.8vh, 24px) 0 0;
+            font-size: clamp(22px, 3.2vh, 40px);
             line-height: 1.15;
             font-weight: 700;
-            color: #788598;
             letter-spacing: -0.035em;
+            background: linear-gradient(95deg, #8b35ff 0%, #c23bff 45%, #ff4dd8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .description {
             max-width: 650px;
-            margin: 22px auto 0;
-            font-size: clamp(18px, 2vw, 24px);
-            line-height: 1.42;
+            margin: clamp(10px, 1.6vh, 20px) auto 0;
+            font-size: clamp(15px, 1.9vh, 22px);
+            line-height: 1.38;
             color: #8b96a7;
             font-weight: 500;
         }
 
         .support-card {
             width: min(860px, 100%);
-            margin: 34px auto 0;
-            padding: 28px;
+            margin: clamp(16px, 2.6vh, 32px) auto 0;
+            padding: clamp(16px, 2vh, 26px);
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 26px;
@@ -153,56 +127,8 @@
             backdrop-filter: blur(16px);
         }
 
-        .row,
-        .mini-link {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            min-height: 86px;
-            padding: 18px 22px;
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(98, 112, 135, 0.14);
-            color: var(--text-main);
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
-
-        .row:hover,
-        .mini-link:hover {
-            transform: translateY(-2px);
-            border-color: rgba(139, 53, 255, 0.25);
-            box-shadow: 0 12px 28px rgba(115, 82, 160, 0.1);
-        }
-
-        .row {
-            border-radius: 20px;
-            margin-bottom: 14px;
-        }
-
-        .topics {
-            margin-top: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(98, 112, 135, 0.14);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.88);
-        }
-
-        .topics .row {
-            margin: 0;
-            border: 0;
-            border-radius: 0;
-            border-bottom: 1px solid rgba(98, 112, 135, 0.12);
-            background: transparent;
-        }
-
-        .topics .row:last-child {
-            border-bottom: 0;
-        }
-
         .icon {
             flex: 0 0 auto;
-            width: 46px;
-            height: 46px;
             display: grid;
             place-items: center;
             border-radius: 13px;
@@ -210,150 +136,240 @@
         }
 
         .icon.mail {
-            background: linear-gradient(135deg, #b85cff, #7434ff);
+            background: #efe7fb;
+            color: #7c4dd4;
         }
 
-        .icon.clock {
-            background: linear-gradient(135deg, #b35cff, #7a34ff);
+        .icon.tg {
+            background: #e4f1fb;
+            color: #3088cf;
         }
 
-        .icon.calendar {
-            background: linear-gradient(135deg, #ff61dc, #e33ed0);
+        .icon.shield-soft,
+        .icon.doc-soft {
+            background: #eef0f3;
+            color: #6b7280;
         }
 
-        .icon.user {
-            background: linear-gradient(135deg, #b85cff, #7e35ff);
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 1.8vw, 20px);
+            padding: clamp(12px, 2vh, 20px) clamp(4px, 0.8vw, 10px);
+            border-bottom: 1px solid rgba(98, 112, 135, 0.12);
         }
 
-        .icon.support {
-            background: linear-gradient(135deg, #5b9dff, #336cff);
+        .contact-row .icon {
+            width: clamp(48px, 6.4vh, 58px);
+            height: clamp(48px, 6.4vh, 58px);
+            border-radius: 17px;
         }
 
-        .icon.shield {
-            background: linear-gradient(135deg, #a75cff, #7636ff);
+        .contact-row .icon svg {
+            width: 34px;
+            height: 34px;
         }
 
-        .icon.doc {
-            background: linear-gradient(135deg, #9f55ff, #7b34ff);
-        }
-
-        .row-text {
+        .contact-info {
             flex: 1;
             min-width: 0;
-            font-size: 20px;
-            font-weight: 650;
-            letter-spacing: -0.025em;
-            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
         }
 
-        .chevron {
-            width: 18px;
-            height: 18px;
-            border-top: 3px solid var(--purple);
-            border-right: 3px solid var(--purple);
-            transform: rotate(45deg);
-            margin-left: auto;
-            border-radius: 2px;
+        .contact-label {
+            font-size: clamp(12px, 1.4vh, 14px);
+            font-weight: 500;
+            color: #9aa3b2;
+            letter-spacing: -0.01em;
         }
 
-        .bottom-links {
-            width: min(760px, 100%);
-            margin: 30px auto 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .contact-value-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+            overflow: hidden;
         }
 
-        .mini-link {
-            min-height: 74px;
-            border-radius: 18px;
-            box-shadow: 0 18px 44px rgba(112, 74, 164, 0.1);
+        .contact-value {
+            min-width: 0;
+            font-size: clamp(17px, 2.3vh, 23px);
+            font-weight: 750;
+            letter-spacing: -0.02em;
+            color: #1f2733;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .mini-link .row-text {
-            font-size: 16px;
+        .copy-btn {
+            position: relative;
+            z-index: 2;
+            flex: 0 0 auto;
+            display: inline-grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: #9aa3b2;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease;
         }
 
-        .mini-link .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+        .copy-btn:hover {
+            background: #eef0f3;
+            color: #5b6472;
         }
 
-        .mini-link .chevron {
-            width: 14px;
-            height: 14px;
-            border-width: 2px;
-            border-color: #a5afbd;
+        .copy-btn svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .copy-btn.copied {
+            color: #22a06b;
+        }
+
+        .action-btn {
+            position: relative;
+            z-index: 2;
+            flex: 0 0 auto;
+            padding: clamp(10px, 1.4vh, 14px) clamp(20px, 2.4vw, 34px);
+            border-radius: 16px;
+            background: #111418;
+            color: #fff;
+            font-size: clamp(14px, 1.8vh, 17px);
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: none;
+            transition: background 0.15s ease;
+        }
+
+        .action-btn:hover {
+            background: #000;
         }
 
         .footer {
-            margin: 34px 0 0;
+            margin: clamp(16px, 2.4vh, 32px) 0 0;
             text-align: center;
-            color: #8c98a9;
-            font-size: 22px;
+            color: #9aa3b2;
+            font-size: clamp(13px, 1.6vh, 16px);
             font-weight: 500;
+        }
+
+        .doc-cards {
+            margin-top: clamp(12px, 1.8vh, 20px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(12px, 1.6vw, 20px);
+        }
+
+        .doc-card {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 1.4vw, 16px);
+            padding: clamp(12px, 1.8vh, 18px) clamp(14px, 1.6vw, 18px);
+            background: #fff;
+            border: 1px solid rgba(98, 112, 135, 0.14);
+            border-radius: 16px;
+            color: #2b333f;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(139, 53, 255, 0.22);
+            box-shadow: 0 12px 26px rgba(115, 82, 160, 0.1);
+        }
+
+        .doc-card .icon {
+            width: clamp(42px, 5.4vh, 50px);
+            height: clamp(42px, 5.4vh, 50px);
+            border-radius: 13px;
+        }
+
+        .doc-card .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .doc-card .icon svg.ico-lg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .doc-title {
+            flex: 1;
+            min-width: 0;
+            font-size: clamp(14px, 1.7vh, 16px);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+        }
+
+        .doc-chevron {
+            flex: 0 0 auto;
+            width: 18px;
+            height: 18px;
+            color: #c2c8d3;
         }
 
         .sparkle {
             position: absolute;
-            width: 36px;
-            height: 36px;
-            color: #f15cde;
-            opacity: 0.75;
+            width: 30px;
+            height: 30px;
+            color: #ef8fe0;
+            opacity: 0.7;
             pointer-events: none;
         }
 
-        .sparkle::before,
-        .sparkle::after {
-            content: "";
-            position: absolute;
-            inset: 50% auto auto 50%;
-            transform: translate(-50%, -50%);
-            background: currentColor;
-            border-radius: 999px;
-        }
-
-        .sparkle::before {
-            width: 5px;
-            height: 36px;
-            box-shadow: 0 0 18px currentColor;
-        }
-
-        .sparkle::after {
-            width: 36px;
-            height: 5px;
-            box-shadow: 0 0 18px currentColor;
+        .sparkle svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 0 8px rgba(241, 92, 222, 0.45));
         }
 
         .sparkle.s1 {
-            top: 78px;
+            top: 84px;
             left: 58%;
-            transform: scale(0.62);
+            width: 22px;
+            height: 22px;
         }
 
         .sparkle.s2 {
-            top: 235px;
-            left: 18%;
-            transform: scale(0.72);
+            top: 232px;
+            left: 17%;
+            width: 26px;
+            height: 26px;
         }
 
         .sparkle.s3 {
-            top: 280px;
-            right: 14%;
-            transform: scale(0.85);
+            top: 286px;
+            right: 13%;
+            width: 32px;
+            height: 32px;
         }
 
         .sparkle.s4 {
-            bottom: 110px;
-            left: 13%;
-            transform: scale(0.72);
+            bottom: 120px;
+            left: 12%;
+            width: 26px;
+            height: 26px;
         }
 
         .sparkle.s5 {
-            bottom: 118px;
-            right: 13%;
-            transform: scale(0.68);
+            bottom: 126px;
+            right: 12%;
+            width: 24px;
+            height: 24px;
         }
 
         svg {
@@ -422,16 +438,6 @@
                 font-size: 18px;
             }
 
-            body::before {
-                left: -245px;
-                bottom: -130px;
-            }
-
-            body::after {
-                right: -270px;
-                bottom: 40px;
-            }
-
             .sparkle.s2,
             .sparkle.s3 {
                 display: none;
@@ -464,114 +470,153 @@
 
 <body>
 <main class="page">
-    <div class="sparkle s1"></div>
-    <div class="sparkle s2"></div>
-    <div class="sparkle s3"></div>
-    <div class="sparkle s4"></div>
-    <div class="sparkle s5"></div>
+    <svg class="bg-lines" viewBox="0 0 32 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <!-- Левая: координаты в сетке 32x18 -->
+        <path d="M -1.5 8.9 C 0.6 8.0, 2.8 8.4, 3.1 10.1 C 3.5 12.2, 1.4 12.9, 1.6 14.7 C 1.8 16.3, 3.4 16.8, 5.7 16.9 C 8.1 17.0, 9.8 17.6, 10.9 19.2"
+              stroke="#9a4dff" stroke-width="54" fill="none" stroke-linecap="round"
+              vector-effect="non-scaling-stroke"></path>
+
+        <!-- Правая: координаты в сетке 32x18 -->
+        <path d="M 33.5 11.0 C 31.7 10.1, 29.5 10.3, 28.5 11.8 C 27.5 13.2, 28.6 14.7, 30.0 15.8 C 31.4 16.9, 32.1 17.8, 32.4 19.2"
+              stroke="#ff4dd8" stroke-width="54" fill="none" stroke-linecap="round"
+              vector-effect="non-scaling-stroke"></path>
+    </svg>
+
+    <div class="sparkle s1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
+    <div class="sparkle s2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
+    <div class="sparkle s3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
+    <div class="sparkle s4"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
+    <div class="sparkle s5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
 
     <header class="logo" aria-label="Gloss">
-        <div class="logo-mark"></div>
+        <div class="logo-mark" role="img" aria-label="Gloss"></div>
         <span>Gloss</span>
     </header>
 
     <section class="hero">
         <h1>Нужна помощь?</h1>
-        <div class="subtitle">Служба поддержки Gloss</div>
         <p class="description">
-            Мы поможем с бронированиями, профилем,<br />
-            техническими вопросами и обратной связью.
+            Если вы столкнулись с проблемой или у вас есть вопрос —<br />
+            напишите нам, и мы поможем разобраться в ближайшее время.
         </p>
     </section>
 
     <section class="support-card" aria-label="Служба поддержки">
-        <a class="row" href="mailto:gloss.support@yandex.ru">
-        <span class="icon mail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M4 6h16v12H4z"></path>
-            <path d="m4 7 8 6 8-6"></path>
-          </svg>
-        </span>
-            <span class="row-text">gloss.support@yandex.ru</span>
-            <span class="chevron"></span>
-        </a>
-
-        <div class="row">
-        <span class="icon clock">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v5l3 2"></path>
-          </svg>
-        </span>
-            <span class="row-text">Обычно отвечаем в течение 1–2 рабочих дней</span>
-            <span class="chevron"></span>
+        <div class="contact-row">
+            <span class="icon mail">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.5 5 H18.5 A3.5 3.5 0 0 1 22 8.5 V15.5 A3.5 3.5 0 0 1 18.5 19 H5.5 A3.5 3.5 0 0 1 2 15.5 V8.5 A3.5 3.5 0 0 1 5.5 5 Z M5 8 L12 12.8 L19 8 L19 9.6 L12 14.4 L5 9.6 Z"></path>
+              </svg>
+            </span>
+            <span class="contact-info">
+                <span class="contact-label">Почта</span>
+                <span class="contact-value-row">
+                    <span class="contact-value">gloss.dev@yandex.ru</span>
+                    <button type="button" class="copy-btn" data-copy="gloss.dev@yandex.ru" title="Копировать" aria-label="Копировать почту">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+                            <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"></path>
+                        </svg>
+                    </button>
+                </span>
+            </span>
+            <a class="action-btn" href="https://mail.yandex.ru/compose?to=gloss.dev@yandex.ru" target="_blank" rel="noopener">Написать</a>
         </div>
 
-        <div class="topics">
-            <div class="row">
-          <span class="icon calendar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <rect x="5" y="5" width="14" height="14" rx="3"></rect>
-              <path d="M8 3v4M16 3v4M5 10h14"></path>
-            </svg>
-          </span>
-                <span class="row-text">Бронирования</span>
-                <span class="chevron"></span>
-            </div>
+        <div class="contact-row">
+            <span class="icon tg">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.78 15.6 9.6 19.2c.42 0 .6-.18.82-.4l1.96-1.9 4.07 2.98c.75.41 1.28.2 1.48-.69l2.68-12.6c.24-1.04-.38-1.45-1.1-1.18L3.6 9.93c-1.02.4-1 .96-.17 1.22l4.13 1.29 9.6-6.05c.45-.3.86-.13.52.17z"></path>
+              </svg>
+            </span>
+            <span class="contact-info">
+                <span class="contact-label">Telegram</span>
+                <span class="contact-value-row">
+                    <span class="contact-value">@gloss_support_bot</span>
+                    <button type="button" class="copy-btn" data-copy="@gloss_support_bot" title="Копировать" aria-label="Копировать Telegram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+                            <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"></path>
+                        </svg>
+                    </button>
+                </span>
+            </span>
+            <a class="action-btn" href="https://t.me/gloss_suppot_bot" target="_blank" rel="noopener">Написать</a>
+        </div>
 
-            <div class="row">
-          <span class="icon user">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <circle cx="12" cy="8" r="4"></circle>
-              <path d="M5 20c1.5-4 12.5-4 14 0"></path>
-            </svg>
-          </span>
-                <span class="row-text">Профиль</span>
-                <span class="chevron"></span>
-            </div>
+        <div class="doc-cards">
+            <a class="doc-card" href="privacy.html">
+                <span class="icon shield-soft">
+                  <svg class="ico-lg" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6z"></path>
+                    <path fill="currentColor" transform="translate(12 11.6) scale(0.72) translate(-12 -11.6)" d="M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6z"></path>
+                  </svg>
+                </span>
+                <span class="doc-title">Политика конфиденциальности</span>
+                <svg class="doc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="m9 6 6 6-6 6"></path>
+                </svg>
+            </a>
 
-            <div class="row">
-          <span class="icon support">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M5 13v-1a7 7 0 0 1 14 0v1"></path>
-              <path d="M5 13h3v5H5zM16 13h3v5h-3z"></path>
-              <path d="M16 18c0 2-2 3-4 3"></path>
-            </svg>
-          </span>
-                <span class="row-text">Техническая поддержка</span>
-                <span class="chevron"></span>
-            </div>
+            <a class="doc-card" href="terms.html">
+                <span class="icon doc-soft">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="5" y="3" width="14" height="18" rx="3.5"></rect>
+                    <path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"></path>
+                  </svg>
+                </span>
+                <span class="doc-title">Правила использования</span>
+                <svg class="doc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="m9 6 6 6-6 6"></path>
+                </svg>
+            </a>
         </div>
     </section>
 
-    <section class="bottom-links">
-        <a class="mini-link" href="privacy.html">
-        <span class="icon shield">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6z"></path>
-            <path d="M10 12l1.5 1.5L15 10"></path>
-          </svg>
-        </span>
-            <span class="row-text">Политика конфиденциальности</span>
-            <span class="chevron"></span>
-        </a>
-
-        <a class="mini-link" href="terms.html">
-        <span class="icon doc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M7 3h7l4 4v14H7z"></path>
-            <path d="M14 3v5h4"></path>
-            <path d="M10 12h5M10 16h5"></path>
-          </svg>
-        </span>
-            <span class="row-text">Пользовательское соглашение</span>
-            <span class="chevron"></span>
-        </a>
-    </section>
-
-    <footer class="footer">
-        © 2026 Gloss
-    </footer>
+    <footer class="footer">© 2026 Gloss. Все права защищены.</footer>
 </main>
+
+<script>
+    (function () {
+        var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"></path></svg>';
+
+        function copyText(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise(function (resolve, reject) {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                try {
+                    document.execCommand('copy') ? resolve() : reject();
+                } catch (e) {
+                    reject(e);
+                }
+                document.body.removeChild(ta);
+            });
+        }
+
+        document.querySelectorAll('.copy-btn').forEach(function (btn) {
+            var original = btn.innerHTML;
+            var timer;
+            btn.addEventListener('click', function () {
+                copyText(btn.getAttribute('data-copy')).then(function () {
+                    clearTimeout(timer);
+                    btn.classList.add('copied');
+                    btn.innerHTML = CHECK;
+                    timer = setTimeout(function () {
+                        btn.classList.remove('copied');
+                        btn.innerHTML = original;
+                    }, 1400);
+                });
+            });
+        });
+    })();
+</script>
 </body>
 </html>
