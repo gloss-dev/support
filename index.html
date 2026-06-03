@@ -378,64 +378,99 @@
             stroke-width: 2.5;
         }
 
-        @media (max-width: 760px) {
+        /* Узкие экраны или короткие окна — разрешаем прокрутку и кладём контент сверху */
+        @media (max-width: 640px), (max-height: 600px) {
+            html,
+            body {
+                height: auto;
+                min-height: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
             .page {
-                padding: 24px 18px 30px;
+                height: auto;
+                min-height: 100vh;
+                min-height: 100svh;
+                justify-content: flex-start;
+                padding-top: 18px;
+                padding-bottom: 28px;
             }
 
             .logo {
-                font-size: 24px;
-            }
-
-            .logo-mark {
-                width: 46px;
-                height: 46px;
-                border-radius: 15px;
+                position: static;
+                margin-bottom: 8px;
             }
 
             .hero {
-                margin-top: 42px;
+                margin-top: 14px;
+            }
+        }
+
+        /* Смартфоны */
+        @media (max-width: 640px) {
+            .page {
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
             h1 {
-                font-size: 50px;
-            }
-
-            .subtitle {
-                font-size: 28px;
+                font-size: clamp(32px, 8.5vw, 46px);
             }
 
             .description {
-                font-size: 18px;
+                font-size: 15px;
+                margin-top: 12px;
+            }
+
+            .description br {
+                display: none;
             }
 
             .support-card {
-                padding: 18px;
-                border-radius: 24px;
+                margin-top: 20px;
+                padding: 14px;
+                border-radius: 22px;
             }
 
-            .row {
-                min-height: 72px;
-                padding: 15px 16px;
-                gap: 14px;
+            .contact-row {
+                flex-wrap: wrap;
+                gap: 12px;
+                padding: 14px 4px;
             }
 
-            .row-text {
+            .contact-row .icon {
+                width: 46px;
+                height: 46px;
+                border-radius: 14px;
+            }
+
+            .contact-row .icon svg {
+                width: 27px;
+                height: 27px;
+            }
+
+            .contact-value {
                 font-size: 17px;
             }
 
-            .icon {
-                width: 42px;
-                height: 42px;
+            .action-btn {
+                flex: 1 0 100%;
+                text-align: center;
+                padding: 12px 20px;
             }
 
-            .bottom-links {
+            .doc-cards {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 12px;
             }
 
             .footer {
-                font-size: 18px;
+                font-size: 13px;
+            }
+
+            .bg-lines path {
+                stroke-width: 34;
             }
 
             .sparkle.s2,
@@ -444,25 +479,27 @@
             }
         }
 
-        @media (max-width: 420px) {
+        /* Очень узкие телефоны */
+        @media (max-width: 380px) {
             h1 {
-                font-size: 42px;
+                font-size: 28px;
             }
 
-            .subtitle {
-                font-size: 24px;
-            }
-
-            .description {
+            .contact-value {
                 font-size: 16px;
             }
 
-            .row-text {
+            .action-btn {
                 font-size: 15px;
             }
 
-            .mini-link .row-text {
-                font-size: 14px;
+            .doc-title {
+                font-size: 15px;
+            }
+
+            .sparkle.s4,
+            .sparkle.s5 {
+                display: none;
             }
         }
     </style>
