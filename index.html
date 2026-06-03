@@ -43,6 +43,7 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
+            transition: opacity 0.45s ease;
         }
 
         .page {
@@ -328,6 +329,7 @@
             color: #ef8fe0;
             opacity: 0.7;
             pointer-events: none;
+            transition: opacity 0.45s ease;
         }
 
         .sparkle svg {
@@ -376,6 +378,14 @@
             width: 24px;
             height: 24px;
             stroke-width: 2.5;
+        }
+
+        /* Звёздочки фона пропадают на экранах ≤ 800px */
+        @media (max-width: 760px) {
+            .sparkle,
+            .bg-lines {
+                opacity: 0;
+            }
         }
 
         /* Узкие экраны или короткие окна — разрешаем прокрутку и кладём контент сверху */
