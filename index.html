@@ -331,6 +331,24 @@
             opacity: 0.7;
             pointer-events: none;
             transition: opacity 0.45s ease;
+            animation: sparkleTwinkle 3.4s ease-in-out infinite;
+        }
+
+        @keyframes sparkleTwinkle {
+            0%, 100% {
+                opacity: 0.45;
+                transform: scale(0.92);
+            }
+            50% {
+                opacity: 0.85;
+                transform: scale(1.06);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sparkle {
+                animation: none;
+            }
         }
 
         .sparkle svg {
@@ -345,6 +363,8 @@
             left: 58%;
             width: 22px;
             height: 22px;
+            animation-duration: 3.1s;
+            animation-delay: 0s;
         }
 
         .sparkle.s2 {
@@ -352,6 +372,8 @@
             left: 17%;
             width: 26px;
             height: 26px;
+            animation-duration: 4.2s;
+            animation-delay: -1.3s;
         }
 
         .sparkle.s3 {
@@ -359,6 +381,8 @@
             right: 13%;
             width: 32px;
             height: 32px;
+            animation-duration: 3.7s;
+            animation-delay: -2.1s;
         }
 
         .sparkle.s4 {
@@ -366,6 +390,8 @@
             left: 12%;
             width: 26px;
             height: 26px;
+            animation-duration: 4.6s;
+            animation-delay: -0.7s;
         }
 
         .sparkle.s5 {
@@ -373,6 +399,8 @@
             right: 12%;
             width: 24px;
             height: 24px;
+            animation-duration: 3.3s;
+            animation-delay: -2.8s;
         }
 
         svg {
@@ -613,7 +641,7 @@
                     <path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"></path>
                   </svg>
                 </span>
-                <span class="doc-title">Правила использования</span>
+                <span class="doc-title">Пользовательское соглашение</span>
                 <svg class="doc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="m9 6 6 6-6 6"></path>
                 </svg>
