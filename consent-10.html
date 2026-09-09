@@ -46,34 +46,12 @@
             position: relative;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            background:
-                radial-gradient(70% 60% at 0% 100%, rgba(154, 77, 255, 0.28), transparent 60%),
-                radial-gradient(70% 60% at 100% 100%, rgba(255, 77, 216, 0.24), transparent 60%),
-                radial-gradient(90% 70% at 50% 0%, rgba(124, 58, 237, 0.08), transparent 70%),
-                linear-gradient(180deg, #ffffff 0%, #faf7ff 55%, #f4ecff 100%);
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.9;
-            mix-blend-mode: soft-light;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            background-size: 160px 160px;
-        }
-
         img { max-width: 100%; }
 
         .topbar {
-            padding: 20px 26px 0;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -116,18 +94,12 @@
 
         .back:hover { background: var(--color-brand-soft); }
 
+        .back svg { width: 17px; height: 17px; }
+
         .doc-wrap {
             max-width: 860px;
             margin: 0 auto;
-            padding: 20px 24px 40px;
-        }
-
-        .sheet {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-card);
-            padding: clamp(24px, 4vw, 46px);
+            padding: clamp(36px, 6vh, 64px) 24px 40px;
         }
 
         h1 {
@@ -201,9 +173,8 @@
 
         @media (max-width: 520px) {
             .topbar { padding: 18px 16px 0; }
-            .doc-wrap { padding: 16px 14px 32px; }
-            .sheet { padding: 22px 18px; }
-            .brand { font-size: 26px; }
+            .doc-wrap { padding: 28px 16px 40px; }
+            .logo span { font-size: 20px; }
             #content p, #content li { font-size: 15px; }
         }
     </style>
@@ -212,13 +183,12 @@
 <body>
 <header class="topbar">
     <a class="logo" href="index.html" aria-label="Gloss"><span class="logo-mark"></span><span>Gloss</span></a>
-    <a class="back" href="index.html">&larr; Назад</a>
+    <a class="back" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Назад</a>
 </header>
 
 <main class="doc-wrap">
-    <div class="sheet">
-        <h1>Согласие на использование файлов cookie, идентификаторов устройства и аналитических технологий</h1>
-        <div id="content">
+    <h1>Согласие на использование файлов cookie, идентификаторов устройства и аналитических технологий</h1>
+    <div id="content">
         <p>Оператор: [УКАЗАТЬ Ф.И.О. ИНДИВИДУАЛЬНОГО ПРЕДПРИНИМАТЕЛЯ], ОГРНИП [УКАЗАТЬ], ИНН [УКАЗАТЬ], адрес [УКАЗАТЬ], адрес электронной почты <a href="mailto:gloss.dev@yandex.ru">gloss.dev@yandex.ru</a> (далее - «Оператор»).</p>
         <p>Я даю согласие на использование файлов cookie, идентификаторов устройства и аналогичных технологий, а также на обработку связанных с ними данных при использовании веб-версии и мобильного приложения сервиса Gloss на следующих условиях. Согласие не распространяется на строго необходимые (технические) технологии, без которых работа Сервиса невозможна и которые применяются без согласия.</p>
         <h2>1. Виды используемых технологий</h2>
@@ -237,7 +207,6 @@
         <h2>5. Порядок предоставления и отзыва согласия</h2>
         <p>В веб-версии согласие выражается через баннер cookie при первом посещении, в мобильном приложении согласие выражается при первом запуске на отдельном экране настроек конфиденциальности с раздельными переключателями для аналитических и рекламных технологий, по умолчанию установленными в положение «выключено», изменение системных настроек устройства не заменяет предоставление настоящего согласия. Согласие действует до его отзыва. Отозвать согласие или изменить выбор можно в настройках Сервиса, в настройках браузера или устройства (включая ограничение рекламного идентификатора), а также по адресу <a href="mailto:gloss.dev@yandex.ru">gloss.dev@yandex.ru</a>. Отключение строго необходимых технологий может сделать использование Сервиса невозможным. Отказ от аналитических и рекламных технологий не ограничивает доступ к основным функциям Сервиса.</p>
         <p>Согласие предоставляется в электронной форме путем проставления Пользователем отметки (нажатия соответствующего элемента интерфейса) в Сервисе. Факт, дата и время предоставления согласия, версия формы, идентификатор и номер телефона Пользователя фиксируются Оператором в электронных журналах Сервиса, что подтверждает получение согласия.</p>
-        </div>
     </div>
 </main>
 

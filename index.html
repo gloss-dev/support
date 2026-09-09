@@ -268,23 +268,14 @@
         .btn-primary:hover { filter: brightness(1.15); }
         .btn-primary:active { transform: translateY(1px); }
 
-        .docs-title {
-            margin: 0 0 clamp(18px, 3vh, 30px);
-            font-size: clamp(30px, 5vw, 46px);
-            line-height: 1.1;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            color: var(--color-text);
-        }
-
         .doc-section { margin-top: clamp(24px, 3.6vh, 36px); }
         .doc-section:first-of-type { margin-top: 0; }
 
         .section-title {
-            margin: 0 0 8px;
+            margin: 0 0 10px;
             padding-left: 2px;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: clamp(20px, 3vw, 26px);
+            font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--color-text);
         }
@@ -402,8 +393,6 @@
     </section>
 
     <section class="panel" id="panel-docs" role="tabpanel" aria-label="Документы" hidden>
-        <h1 class="docs-title">Документы</h1>
-
         <div class="doc-section">
             <div class="section-title">Персональные данные</div>
             <div class="doc-links">
