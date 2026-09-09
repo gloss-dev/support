@@ -3,78 +3,137 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Gloss — служба поддержки</title>
-    <meta name="description" content="Служба поддержки приложения Gloss" />
-
+    <title>Поддержка Gloss</title>
+    <meta name="description" content="Служба поддержки и документы сервиса Gloss" />
     <link rel="icon" type="image/png" href="logo.png" />
     <link rel="apple-touch-icon" href="logo.png" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         :root {
-            --text-main: #071629;
-            --text-secondary: #7c899b;
-            --card-bg: rgba(255, 255, 255, 0.92);
-            --border: rgba(118, 95, 150, 0.14);
-            --purple: #8b35ff;
-            --pink: #ff4dd8;
-            --blue: #3478ff;
-            --shadow: 0 24px 70px rgba(112, 74, 164, 0.14);
+            --color-bg: #ffffff;
+            --color-surface: #ffffff;
+            --color-surface-alt: #f3f4f6;
+            --color-text: #111827;
+            --color-muted-text: #6b7280;
+            --color-placeholder: #9ca3af;
+            --color-border: #e5e7eb;
+            --color-separator: #f3f4f6;
+            --color-brand: #7c3aed;
+            --color-brand-soft: rgba(124, 58, 237, 0.1);
+            --color-action: #111827;
+            --color-on-action: #ffffff;
+            --shadow-card: 0 6px 12px rgba(17, 24, 39, 0.08);
+            --shadow-pop: 0 12px 32px rgba(17, 24, 39, 0.16);
+            --radius-md: 14px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
+            --radius-pill: 999px;
+            --font-body: 'Montserrat', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --font-logo: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --transition-fast: 120ms ease;
+            --transition-base: 200ms ease;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
-        html,
+        html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; }
+
         body {
             margin: 0;
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            color: var(--text-main);
-            background:
-                    radial-gradient(circle at 85% 8%, rgba(255, 220, 250, 0.95) 0, transparent 34%),
-                    radial-gradient(circle at 10% 85%, rgba(237, 229, 255, 0.92) 0, transparent 38%),
-                    linear-gradient(135deg, #ffffff 0%, #fff8fd 42%, #f7efff 100%) fixed;
-            overflow: hidden;
+            min-height: 100vh;
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
         }
 
-        .bg-lines {
+        body::before {
+            content: "";
             position: fixed;
             inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            transition: opacity 0.45s ease;
+            z-index: -2;
+            background:
+                radial-gradient(70% 60% at 0% 100%, rgba(154, 77, 255, 0.30), transparent 60%),
+                radial-gradient(70% 60% at 100% 100%, rgba(255, 77, 216, 0.26), transparent 60%),
+                radial-gradient(90% 70% at 50% 0%, rgba(124, 58, 237, 0.08), transparent 70%),
+                linear-gradient(180deg, #ffffff 0%, #faf7ff 55%, #f4ecff 100%);
         }
 
-        .page {
-            position: relative;
-            z-index: 1;
-            height: 100vh;
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.9;
+            mix-blend-mode: soft-light;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 160px 160px;
+        }
+
+        .wrap {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        #panel-help .card {
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .topbar {
+            padding: 20px 26px 0;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .topbar .logo { justify-self: start; }
+        .topbar .nav { justify-self: center; }
+
+        .nav {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: clamp(14px, 2.4vh, 30px) 28px;
-            overflow: hidden;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .navlink {
+            padding: 9px 15px;
+            border: 0;
+            border-radius: var(--radius-md);
+            background: transparent;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-muted-text);
+            cursor: pointer;
+            transition: color var(--transition-fast), background-color var(--transition-fast);
+        }
+
+        .navlink:hover {
+            color: var(--color-text);
+            background: var(--color-surface-alt);
+        }
+
+        .navlink.active,
+        .navlink.active:hover {
+            color: var(--color-brand);
+            background: var(--color-brand-soft);
+            font-weight: 600;
         }
 
         .logo {
-            position: absolute;
-            top: 28px;
-            left: 28px;
             display: inline-flex;
             align-items: center;
             gap: 9px;
-        }
-
-        .logo span {
-            font-family: Georgia, "Times New Roman", "PT Serif", serif;
-            font-size: 23px;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            color: #3a3f47;
+            text-decoration: none;
         }
 
         .logo-mark {
@@ -84,576 +143,301 @@
             filter: drop-shadow(0 8px 16px rgba(169, 61, 239, 0.22));
         }
 
+        .logo span {
+            font-family: Georgia, "Times New Roman", "PT Serif", serif;
+            font-size: 23px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            color: #3a3f47;
+        }
+
         .hero {
-            max-width: 960px;
-            margin: clamp(16px, 3vh, 34px) auto 0;
             text-align: center;
+            margin: 0 0 clamp(16px, 3vh, 28px);
         }
 
-        h1 {
+        .hero h1 {
             margin: 0;
-            font-size: clamp(40px, 6vh, 78px);
-            line-height: 0.98;
-            font-weight: 800;
-            letter-spacing: -0.055em;
-            color: var(--text-main);
-        }
-
-        .subtitle {
-            margin: clamp(12px, 1.8vh, 24px) 0 0;
-            font-size: clamp(22px, 3.2vh, 40px);
-            line-height: 1.15;
+            font-size: clamp(32px, 5.4vw, 52px);
+            line-height: 1.08;
             font-weight: 700;
-            letter-spacing: -0.035em;
-            background: linear-gradient(95deg, #8b35ff 0%, #c23bff 45%, #ff4dd8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            letter-spacing: -0.03em;
+            color: var(--color-text);
         }
 
-        .description {
-            max-width: 650px;
-            margin: clamp(10px, 1.6vh, 20px) auto 0;
-            font-size: clamp(15px, 1.9vh, 22px);
-            line-height: 1.38;
-            color: #8b96a7;
-            font-weight: 500;
+        .hero p {
+            max-width: 540px;
+            margin: 16px auto 0;
+            font-size: clamp(15px, 1.9vw, 18px);
+            line-height: 1.5;
+            color: var(--color-muted-text);
         }
 
-        .support-card {
-            width: min(860px, 100%);
-            margin: clamp(16px, 2.6vh, 32px) auto 0;
-            padding: clamp(16px, 2vh, 26px);
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 26px;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(16px);
+        .panel {
+            margin: clamp(24px, 4vh, 40px) auto 0;
         }
 
-        .icon {
-            flex: 0 0 auto;
-            display: grid;
-            place-items: center;
-            border-radius: 13px;
-            color: white;
-        }
+        .panel[hidden] { display: none; }
 
-        .icon.mail {
-            background: #efe7fb;
-            color: #7c4dd4;
-        }
-
-        .icon.tg {
-            background: #e4f1fb;
-            color: #3088cf;
-        }
-
-        .icon.shield-soft,
-        .icon.doc-soft {
-            background: #eef0f3;
-            color: #6b7280;
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-card);
+            padding: clamp(8px, 1.2vw, 12px) clamp(16px, 2.2vw, 24px);
         }
 
         .contact-row {
             display: flex;
             align-items: center;
-            gap: clamp(14px, 1.8vw, 20px);
-            padding: clamp(12px, 2vh, 20px) clamp(4px, 0.8vw, 10px);
-            border-bottom: 1px solid rgba(98, 112, 135, 0.12);
+            gap: clamp(12px, 1.8vw, 18px);
+            padding: clamp(14px, 2vh, 20px) 4px;
+            border-bottom: 1px solid var(--color-separator);
         }
 
-        .contact-row .icon {
-            width: clamp(48px, 6.4vh, 58px);
-            height: clamp(48px, 6.4vh, 58px);
-            border-radius: 17px;
+        .contact-row:last-child { border-bottom: 0; }
+
+        .ic {
+            flex: 0 0 auto;
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
         }
 
-        .contact-row .icon svg {
-            width: 34px;
-            height: 34px;
-        }
+        .ic svg { width: 28px; height: 28px; }
+        .ic.tg { background: #e4f1fb; color: #3088cf; }
+        .ic.mail { background: var(--color-brand-soft); color: var(--color-brand); }
 
-        .contact-info {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
+        .contact-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 
         .contact-label {
-            font-size: clamp(12px, 1.4vh, 14px);
+            font-size: 13px;
             font-weight: 500;
-            color: #9aa3b2;
-            letter-spacing: -0.01em;
+            color: var(--color-placeholder);
         }
 
-        .contact-value-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            min-width: 0;
-            overflow: hidden;
-        }
+        .contact-value-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
 
         .contact-value {
             min-width: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            font-size: clamp(16px, 2.2vh, 22px);
+            font-size: clamp(15px, 2vw, 18px);
             font-weight: 600;
-            letter-spacing: -0.01em;
-            color: #2b333f;
+            color: var(--color-text);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .copy-btn {
-            position: relative;
-            z-index: 2;
             flex: 0 0 auto;
-            display: inline-grid;
+            display: grid;
             place-items: center;
             width: 30px;
             height: 30px;
-            padding: 0;
-            border: none;
+            border-radius: 9px;
+            color: var(--color-placeholder);
             background: transparent;
-            color: #9aa3b2;
-            border-radius: 8px;
+            border: 0;
             cursor: pointer;
-            transition: background 0.15s ease, color 0.15s ease;
+            transition: background var(--transition-fast), color var(--transition-fast);
         }
 
-        .copy-btn:hover {
-            background: #eef0f3;
-            color: #5b6472;
-        }
+        .copy-btn:hover { background: var(--color-surface-alt); color: var(--color-text); }
+        .copy-btn.copied { color: #059669; }
+        .copy-btn svg { width: 16px; height: 16px; }
 
-        .copy-btn svg {
-            width: 17px;
-            height: 17px;
-        }
-
-        .copy-btn.copied {
-            color: #22a06b;
-        }
-
-        .action-btn {
-            position: relative;
-            z-index: 2;
+        .btn-primary {
             flex: 0 0 auto;
-            padding: clamp(10px, 1.4vh, 14px) clamp(20px, 2.4vw, 34px);
-            border-radius: 16px;
-            background: #111418;
-            color: #fff;
-            font-size: clamp(14px, 1.8vh, 17px);
-            font-weight: 600;
-            text-decoration: none;
-            white-space: nowrap;
-            box-shadow: none;
-            transition: background 0.15s ease;
-        }
-
-        .action-btn:hover {
-            background: #000;
-        }
-
-        .footer {
-            margin: clamp(16px, 2.4vh, 32px) 0 0;
-            text-align: center;
-            color: #9aa3b2;
-            font-size: clamp(13px, 1.6vh, 16px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            padding: 0 20px;
+            border-radius: var(--radius-lg);
+            background: var(--color-action);
+            color: var(--color-on-action);
+            font-size: 14px;
             font-weight: 500;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: filter var(--transition-fast), transform var(--transition-fast);
         }
 
-        .doc-cards {
-            margin-top: clamp(12px, 1.8vh, 20px);
+        .btn-primary:hover { filter: brightness(1.15); }
+        .btn-primary:active { transform: translateY(1px); }
+
+        .docs-title {
+            margin: 0 0 clamp(18px, 3vh, 30px);
+            font-size: clamp(30px, 5vw, 46px);
+            line-height: 1.1;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+        }
+
+        .doc-section { margin-top: clamp(24px, 3.6vh, 36px); }
+        .doc-section:first-of-type { margin-top: 0; }
+
+        .section-title {
+            margin: 0 0 8px;
+            padding-left: 2px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--color-text);
+        }
+
+        .doc-links {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: clamp(12px, 1.6vw, 20px);
+            gap: 0 clamp(20px, 3vw, 44px);
         }
 
-        .doc-card {
+        .doc-links a {
             display: flex;
-            align-items: center;
-            gap: clamp(12px, 1.4vw, 16px);
-            padding: clamp(12px, 1.8vh, 18px) clamp(14px, 1.6vw, 18px);
-            background: #fff;
-            border: 1px solid rgba(98, 112, 135, 0.14);
-            border-radius: 16px;
-            color: #2b333f;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 14px 2px;
+            color: var(--color-muted-text);
             text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            font-size: 16px;
+            line-height: 1.4;
+            border-bottom: 1px solid rgba(17, 24, 39, 0.07);
+            transition: color var(--transition-fast);
         }
 
-        .doc-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(139, 53, 255, 0.22);
-            box-shadow: 0 12px 26px rgba(115, 82, 160, 0.1);
-        }
-
-        .doc-card .icon {
-            width: clamp(42px, 5.4vh, 50px);
-            height: clamp(42px, 5.4vh, 50px);
-            border-radius: 13px;
-        }
-
-        .doc-card .icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .doc-card .icon svg.ico-lg {
-            width: 30px;
-            height: 30px;
-        }
-
-        .doc-title {
-            flex: 1;
-            min-width: 0;
-            font-size: clamp(14px, 1.7vh, 16px);
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            line-height: 1.25;
-        }
-
-        .doc-chevron {
+        .doc-links a::before {
+            content: "";
             flex: 0 0 auto;
-            width: 18px;
-            height: 18px;
-            color: #c2c8d3;
+            width: 23px;
+            height: 1.4em;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9 13h6M9 17h5'/%3E%3C/svg%3E") center / 23px 23px no-repeat;
         }
 
-        .sparkle {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            color: #ef8fe0;
-            opacity: 0.7;
-            pointer-events: none;
-            transition: opacity 0.45s ease;
-            animation: sparkleTwinkle 3.4s ease-in-out infinite;
+        .doc-links a:hover { color: var(--color-brand); }
+
+        .footer {
+            margin: clamp(28px, 6vh, 60px) 0 0;
+            padding: 22px 0 40px;
+            text-align: center;
+            color: var(--color-placeholder);
+            font-size: 13px;
+            border-top: 1px solid var(--color-separator);
         }
 
-        @keyframes sparkleTwinkle {
-            0%, 100% {
-                opacity: 0.45;
-                transform: scale(0.92);
-            }
-            50% {
-                opacity: 0.85;
-                transform: scale(1.06);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .sparkle {
-                animation: none;
-            }
-        }
-
-        .sparkle svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-            filter: drop-shadow(0 0 8px rgba(241, 92, 222, 0.45));
-        }
-
-        .sparkle.s1 {
-            top: 84px;
-            left: 58%;
-            width: 22px;
-            height: 22px;
-            animation-duration: 3.1s;
-            animation-delay: 0s;
-        }
-
-        .sparkle.s2 {
-            top: 232px;
-            left: 17%;
-            width: 26px;
-            height: 26px;
-            animation-duration: 4.2s;
-            animation-delay: -1.3s;
-        }
-
-        .sparkle.s3 {
-            top: 286px;
-            right: 13%;
-            width: 32px;
-            height: 32px;
-            animation-duration: 3.7s;
-            animation-delay: -2.1s;
-        }
-
-        .sparkle.s4 {
-            bottom: 120px;
-            left: 12%;
-            width: 26px;
-            height: 26px;
-            animation-duration: 4.6s;
-            animation-delay: -0.7s;
-        }
-
-        .sparkle.s5 {
-            bottom: 126px;
-            right: 12%;
-            width: 24px;
-            height: 24px;
-            animation-duration: 3.3s;
-            animation-delay: -2.8s;
-        }
-
-        svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 2.5;
-        }
-
-        /* Звёздочки фона пропадают на экранах ≤ 800px */
-        @media (max-width: 760px) {
-            .sparkle,
-            .bg-lines {
-                opacity: 0;
-            }
-        }
-
-        /* Узкие экраны или короткие окна — разрешаем прокрутку и кладём контент сверху */
-        @media (max-width: 640px), (max-height: 600px) {
-            html,
-            body {
-                height: auto;
-                min-height: 100%;
-                overflow-x: hidden;
-                overflow-y: auto;
-            }
-
-            .page {
-                height: auto;
-                min-height: 100vh;
-                min-height: 100svh;
-                justify-content: flex-start;
-                padding-top: 18px;
-                padding-bottom: 28px;
-            }
-
-            .logo {
-                position: static;
-                margin-bottom: 8px;
-            }
-
-            .hero {
-                margin-top: 14px;
-            }
-        }
-
-        /* Смартфоны */
-        @media (max-width: 640px) {
-            .page {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-
-            h1 {
-                font-size: clamp(32px, 8.5vw, 46px);
-            }
-
-            .description {
-                font-size: 15px;
-                margin-top: 12px;
-            }
-
-            .description br {
-                display: none;
-            }
-
-            .support-card {
-                margin-top: 20px;
-                padding: 14px;
-                border-radius: 22px;
-            }
-
-            .contact-row {
-                flex-wrap: wrap;
-                gap: 12px;
-                padding: 14px 4px;
-            }
-
-            .contact-row .icon {
-                width: 46px;
-                height: 46px;
-                border-radius: 14px;
-            }
-
-            .contact-row .icon svg {
-                width: 27px;
-                height: 27px;
-            }
-
-            .contact-value {
-                font-size: 17px;
-            }
-
-            .action-btn {
-                flex: 1 0 100%;
-                text-align: center;
-                padding: 12px 20px;
-            }
-
-            .doc-cards {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .footer {
-                font-size: 13px;
-            }
-
-            .bg-lines path {
-                stroke-width: 34;
-            }
-
-            .sparkle.s2,
-            .sparkle.s3 {
-                display: none;
-            }
-        }
-
-        /* Очень узкие телефоны */
-        @media (max-width: 380px) {
-            h1 {
-                font-size: 28px;
-            }
-
-            .contact-value {
-                font-size: 16px;
-            }
-
-            .action-btn {
-                font-size: 15px;
-            }
-
-            .doc-title {
-                font-size: 15px;
-            }
-
-            .sparkle.s4,
-            .sparkle.s5 {
-                display: none;
-            }
+        @media (max-width: 560px) {
+            .wrap { padding: 0 16px; }
+            .topbar { padding: 16px 16px 0; gap: 8px; }
+            .navlink { padding: 8px 11px; }
+            .doc-links { grid-template-columns: 1fr; }
+            .contact-row { flex-wrap: wrap; }
+            .btn-primary { flex: 1 0 100%; }
         }
     </style>
 </head>
 
 <body>
-<main class="page">
-    <svg class="bg-lines" viewBox="0 0 32 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <!-- Левая: координаты в сетке 32x18 -->
-        <path d="M -1.5 8.9 C 0.6 8.0, 2.8 8.4, 3.1 10.1 C 3.5 12.2, 1.4 12.9, 1.6 14.7 C 1.8 16.3, 3.4 16.8, 5.7 16.9 C 8.1 17.0, 9.8 17.6, 10.9 19.2"
-              stroke="#9a4dff" stroke-width="54" fill="none" stroke-linecap="round"
-              vector-effect="non-scaling-stroke"></path>
-
-        <!-- Правая: координаты в сетке 32x18 -->
-        <path d="M 33.5 11.0 C 31.7 10.1, 29.5 10.3, 28.5 11.8 C 27.5 13.2, 28.6 14.7, 30.0 15.8 C 31.4 16.9, 32.1 17.8, 32.4 19.2"
-              stroke="#ff4dd8" stroke-width="54" fill="none" stroke-linecap="round"
-              vector-effect="non-scaling-stroke"></path>
-    </svg>
-
-    <div class="sparkle s1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
-    <div class="sparkle s2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
-    <div class="sparkle s3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
-    <div class="sparkle s4"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
-    <div class="sparkle s5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 7.6 3.8 11.3 12 12-8.2.7-11.3 4.4-12 12-.7-7.6-3.8-11.3-12-12C8.2 11.3 11.3 7.6 12 0Z"></path></svg></div>
-
-    <header class="logo" aria-label="Gloss">
-        <div class="logo-mark" role="img" aria-label="Gloss"></div>
+<header class="topbar">
+    <a class="logo" href="index.html" aria-label="Gloss">
+        <span class="logo-mark"></span>
         <span>Gloss</span>
-    </header>
+    </a>
+    <nav class="nav" role="tablist" aria-label="Разделы">
+        <button type="button" class="navlink active" data-tab="help" role="tab" aria-selected="true">Помощь</button>
+        <button type="button" class="navlink" data-tab="docs" role="tab" aria-selected="false">Документы</button>
+    </nav>
+</header>
 
-    <section class="hero">
-        <h1>Нужна помощь?</h1>
-        <p class="description">
-            Если вы столкнулись с проблемой или у вас есть вопрос —<br />
-            напишите нам, и мы поможем разобраться в ближайшее время.
-        </p>
+<div class="wrap">
+    <section class="panel" id="panel-help" role="tabpanel" aria-label="Помощь">
+        <div class="hero">
+            <h1>Нужна помощь?</h1>
+            <p>Если вы столкнулись с проблемой или у вас есть вопрос — напишите нам, и мы поможем разобраться в ближайшее время.</p>
+        </div>
+        <div class="card">
+            <div class="contact-row">
+                <span class="ic tg">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9.78 15.6 9.6 19.2c.42 0 .6-.18.82-.4l1.96-1.9 4.07 2.98c.75.41 1.28.2 1.48-.69l2.68-12.6c.24-1.04-.38-1.45-1.1-1.18L3.6 9.93c-1.02.4-1 .96-.17 1.22l4.13 1.29 9.6-6.05c.45-.3.86-.13.52.17z"></path>
+                  </svg>
+                </span>
+                <span class="contact-info">
+                    <span class="contact-label">Telegram</span>
+                    <span class="contact-value-row">
+                        <span class="contact-value">@gloss_support_bot</span>
+                        <button type="button" class="copy-btn" data-copy="@gloss_support_bot" title="Копировать" aria-label="Копировать Telegram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+                                <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"></path>
+                            </svg>
+                        </button>
+                    </span>
+                </span>
+                <a class="btn-primary" href="https://t.me/gloss_suppot_bot" target="_blank" rel="noopener">Написать</a>
+            </div>
+
+            <div class="contact-row">
+                <span class="ic mail">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.5 5 H18.5 A3.5 3.5 0 0 1 22 8.5 V15.5 A3.5 3.5 0 0 1 18.5 19 H5.5 A3.5 3.5 0 0 1 2 15.5 V8.5 A3.5 3.5 0 0 1 5.5 5 Z M5 8 L12 12.8 L19 8 L19 9.6 L12 14.4 L5 9.6 Z"></path>
+                  </svg>
+                </span>
+                <span class="contact-info">
+                    <span class="contact-label">Почта</span>
+                    <span class="contact-value-row">
+                        <span class="contact-value">gloss.dev@yandex.ru</span>
+                        <button type="button" class="copy-btn" data-copy="gloss.dev@yandex.ru" title="Копировать" aria-label="Копировать почту">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
+                                <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"></path>
+                            </svg>
+                        </button>
+                    </span>
+                </span>
+                <a class="btn-primary" href="https://mail.yandex.ru/compose?to=gloss.dev@yandex.ru" target="_blank" rel="noopener">Написать</a>
+            </div>
+        </div>
     </section>
 
-    <section class="support-card" aria-label="Служба поддержки">
-        <div class="contact-row">
-            <span class="icon tg">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9.78 15.6 9.6 19.2c.42 0 .6-.18.82-.4l1.96-1.9 4.07 2.98c.75.41 1.28.2 1.48-.69l2.68-12.6c.24-1.04-.38-1.45-1.1-1.18L3.6 9.93c-1.02.4-1 .96-.17 1.22l4.13 1.29 9.6-6.05c.45-.3.86-.13.52.17z"></path>
-              </svg>
-            </span>
-            <span class="contact-info">
-                <span class="contact-label">Telegram</span>
-                <span class="contact-value-row">
-                    <span class="contact-value">@gloss_support_bot</span>
-                    <button type="button" class="copy-btn" data-copy="@gloss_support_bot" title="Копировать" aria-label="Копировать Telegram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
-                            <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"></path>
-                        </svg>
-                    </button>
-                </span>
-            </span>
-            <a class="action-btn" href="https://t.me/gloss_suppot_bot" target="_blank" rel="noopener">Написать</a>
+    <section class="panel" id="panel-docs" role="tabpanel" aria-label="Документы" hidden>
+        <h1 class="docs-title">Документы</h1>
+
+        <div class="doc-section">
+            <div class="section-title">Персональные данные</div>
+            <div class="doc-links">
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="consent-1.html">Согласие на обработку персональных данных Клиента</a>
+                <a href="consent-2.html">Согласие на обработку персональных данных Мастера</a>
+                <a href="consent-8.html">Согласие на обработку персональных данных Владельца (представителя) Организации</a>
+                <a href="consent-3.html">Согласие на обработку персональных данных, разрешенных для распространения (публикация Анкеты Мастера)</a>
+                <a href="consent-5.html">Согласие на обработку персональных данных Клиента, разрешенных для распространения (публикация отзыва)</a>
+                <a href="consent-4.html">Согласие на передачу персональных данных Клиента Мастеру и Организации (Салону)</a>
+            </div>
         </div>
 
-        <div class="contact-row">
-            <span class="icon mail">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.5 5 H18.5 A3.5 3.5 0 0 1 22 8.5 V15.5 A3.5 3.5 0 0 1 18.5 19 H5.5 A3.5 3.5 0 0 1 2 15.5 V8.5 A3.5 3.5 0 0 1 5.5 5 Z M5 8 L12 12.8 L19 8 L19 9.6 L12 14.4 L5 9.6 Z"></path>
-              </svg>
-            </span>
-            <span class="contact-info">
-                <span class="contact-label">Почта</span>
-                <span class="contact-value-row">
-                    <span class="contact-value">gloss.dev@yandex.ru</span>
-                    <button type="button" class="copy-btn" data-copy="gloss.dev@yandex.ru" title="Копировать" aria-label="Копировать почту">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="11" height="11" rx="2.5"></rect>
-                            <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"></path>
-                        </svg>
-                    </button>
-                </span>
-            </span>
-            <a class="action-btn" href="https://mail.yandex.ru/compose?to=gloss.dev@yandex.ru" target="_blank" rel="noopener">Написать</a>
+        <div class="doc-section">
+            <div class="section-title">Договоры</div>
+            <div class="doc-links">
+                <a href="terms.html">Пользовательское соглашение</a>
+                <a href="oferta.html">Публичная оферта для организаций</a>
+            </div>
         </div>
 
-        <div class="doc-cards">
-            <a class="doc-card" href="privacy.html">
-                <span class="icon shield-soft">
-                  <svg class="ico-lg" viewBox="0 0 24 24">
-                    <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6z"></path>
-                    <path fill="currentColor" transform="translate(12 11.6) scale(0.72) translate(-12 -11.6)" d="M12 3 5 6v5c0 5 3.5 8.5 7 10 3.5-1.5 7-5 7-10V6z"></path>
-                  </svg>
-                </span>
-                <span class="doc-title">Политика конфиденциальности</span>
-                <svg class="doc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="m9 6 6 6-6 6"></path>
-                </svg>
-            </a>
-
-            <a class="doc-card" href="terms.html">
-                <span class="icon doc-soft">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <rect x="5" y="3" width="14" height="18" rx="3.5"></rect>
-                    <path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"></path>
-                  </svg>
-                </span>
-                <span class="doc-title">Пользовательское соглашение</span>
-                <svg class="doc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="m9 6 6 6-6 6"></path>
-                </svg>
-            </a>
+        <div class="doc-section">
+            <div class="section-title">Прочее</div>
+            <div class="doc-links">
+                <a href="consent-6.html">Согласие на получение рекламных и информационных сообщений</a>
+                <a href="consent-7.html">Согласие на обработку сведений о местоположении (геолокации)</a>
+                <a href="consent-9.html">Согласие на обработку сведений при телефонном соединении через Сервис</a>
+                <a href="consent-10.html">Согласие на использование файлов cookie, идентификаторов устройства и аналитических технологий</a>
+            </div>
         </div>
     </section>
 
     <footer class="footer">© 2026 Gloss. Все права защищены.</footer>
-</main>
+</div>
 
 <script>
     (function () {
@@ -671,30 +455,50 @@
                 document.body.appendChild(ta);
                 ta.focus();
                 ta.select();
-                try {
-                    document.execCommand('copy') ? resolve() : reject();
-                } catch (e) {
-                    reject(e);
-                }
+                try { document.execCommand('copy') ? resolve() : reject(); }
+                catch (e) { reject(e); }
                 document.body.removeChild(ta);
             });
         }
 
         document.querySelectorAll('.copy-btn').forEach(function (btn) {
             var original = btn.innerHTML;
-            var timer;
             btn.addEventListener('click', function () {
                 copyText(btn.getAttribute('data-copy')).then(function () {
-                    clearTimeout(timer);
-                    btn.classList.add('copied');
                     btn.innerHTML = CHECK;
-                    timer = setTimeout(function () {
-                        btn.classList.remove('copied');
+                    btn.classList.add('copied');
+                    setTimeout(function () {
                         btn.innerHTML = original;
-                    }, 1400);
-                });
+                        btn.classList.remove('copied');
+                    }, 1600);
+                }).catch(function () {});
             });
         });
+    })();
+
+    (function () {
+        var tabs = document.querySelectorAll('.navlink');
+        var panels = {
+            help: document.getElementById('panel-help'),
+            docs: document.getElementById('panel-docs')
+        };
+        function activate(name) {
+            if (!panels[name]) name = 'help';
+            tabs.forEach(function (t) {
+                var on = t.getAttribute('data-tab') === name;
+                t.classList.toggle('active', on);
+                t.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            Object.keys(panels).forEach(function (k) { panels[k].hidden = (k !== name); });
+            try { localStorage.setItem('gloss-tab', name); } catch (e) {}
+        }
+        tabs.forEach(function (t) {
+            t.addEventListener('click', function () { activate(t.getAttribute('data-tab')); });
+        });
+        var initial = 'help';
+        if (location.hash === '#documents' || location.hash === '#docs') initial = 'docs';
+        else { try { initial = localStorage.getItem('gloss-tab') || 'help'; } catch (e) {} }
+        activate(initial);
     })();
 </script>
 </body>
